@@ -174,3 +174,51 @@ AND ORDER_DATE_TIME > DATEADD(YEAR,-1,GETDATE())
 GROUP BY ACCOUNT_ID
 
 
+--************************************************************************************************
+--************************************************************************************************
+--******************************* Total Quantity Returned ****************************************
+
+-- 18. Total Quantity Returned 14 days
+SELECT 
+	ACCOUNT_ID,
+	SUM(QUANTITY_RETURNED) TTL_QUANTITY_RETURNED_LAST_14_DAYS 
+FROM DBO.fact_order
+WHERE QUANTITY_RETURNED > 0
+AND ORDER_DATE_TIME > DATEADD(DAY,-14,GETDATE())
+GROUP BY ACCOUNT_ID
+
+-- 19. Total Quantity Returned 30 days
+SELECT 
+	ACCOUNT_ID,
+	SUM(QUANTITY_RETURNED) TTL_QUANTITY_RETURNED_LAST_30_DAYS 
+FROM DBO.fact_order
+WHERE QUANTITY_RETURNED > 0
+AND ORDER_DATE_TIME > DATEADD(DAY,-30,GETDATE())
+GROUP BY ACCOUNT_ID
+
+-- 20. Total Quantity Returned 3 months
+SELECT 
+	ACCOUNT_ID,
+	SUM(QUANTITY_RETURNED) TTL_QUANTITY_RETURNED_LAST_3_MONTHS
+FROM DBO.fact_order
+WHERE QUANTITY_RETURNED > 0
+AND ORDER_DATE_TIME > DATEADD(MONTH,-3,GETDATE())
+GROUP BY ACCOUNT_ID
+
+-- 21. Total Quantity Returned 6 months
+SELECT 
+	ACCOUNT_ID,
+	SUM(QUANTITY_RETURNED) TTL_QUANTITY_RETURNED_LAST_6_MONTHS
+FROM DBO.fact_order
+WHERE QUANTITY_RETURNED > 0
+AND ORDER_DATE_TIME > DATEADD(MONTH,-6,GETDATE())
+GROUP BY ACCOUNT_ID
+
+-- 22. Total Quantity Returned 1 year
+SELECT 
+	ACCOUNT_ID,
+	SUM(QUANTITY_RETURNED) TTL_QUANTITY_RETURNED_LAST_1_YEAR
+FROM DBO.fact_order
+WHERE QUANTITY_RETURNED > 0
+AND ORDER_DATE_TIME > DATEADD(MONTH,-1,GETDATE())
+GROUP BY ACCOUNT_ID
