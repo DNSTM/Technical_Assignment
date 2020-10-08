@@ -49,7 +49,7 @@ def main(arg):
         myData = json.load(file)
         file.close()
     except:
-        logging.error(str(date.today()) + "ERROR: something went wrong when loading JSON file")
+        logging.error(str(date.today()) + " ERROR: something went wrong when loading JSON file")
     finally:
         # calling the main transformation function
         JSON_Transformer(myData, json)
