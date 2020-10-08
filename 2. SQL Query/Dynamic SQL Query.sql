@@ -85,4 +85,55 @@ BEGIN
 END; 
 
 
-EXEC DBO.ORDER_LTV 'REFUND' , 'YEAR', 2
+--*************************  EXECUTION GUIDE: *******************************
+
+/********************************** TOTAL SALES ********************************************/
+-- Total Sales 14 days
+EXEC DBO.ORDER_LTV 'SALES' , 'DAY', 14
+-- Total Sales 30 days
+EXEC DBO.ORDER_LTV 'SALES' , 'DAY', 30
+-- Total Sales 3 months
+EXEC DBO.ORDER_LTV 'SALES' , 'MONTH', 3
+-- Total Sales 6 months
+EXEC DBO.ORDER_LTV 'SALES' , 'MONTH', 6
+-- Total Sales 1 year
+EXEC DBO.ORDER_LTV 'SALES' , 'YEAR', 1
+
+/**********************************  TOTAL QUANTITY ORDERED **********************************/
+-- Total Quantity Ordered 14 days
+EXEC DBO.ORDER_LTV 'QUANTITY ORDERED' , 'DAY', 14
+-- Total Quantity Ordered 30 days
+EXEC DBO.ORDER_LTV 'QUANTITY ORDERED' , 'DAY', 30
+-- Total Quantity Ordered 3 months
+EXEC DBO.ORDER_LTV 'QUANTITY ORDERED' , 'MONTH', 3
+-- Total Quantity Ordered 6 months
+EXEC DBO.ORDER_LTV 'QUANTITY ORDERED' , 'MONTH', 6
+-- Total Quantity Ordered 1 year
+EXEC DBO.ORDER_LTV 'QUANTITY ORDERED' , 'YEAR', 1
+
+/**********************************  TOTAL REFUND **********************************/
+-- Total Refund 14 days
+EXEC DBO.ORDER_LTV 'REFUND' , 'DAY', 14
+-- Total Refund 30 days
+EXEC DBO.ORDER_LTV 'REFUND' , 'DAY', 30
+-- Total Refund 3 months
+EXEC DBO.ORDER_LTV 'REFUND' , 'MONTH', 3
+-- Total Refund 6 months
+EXEC DBO.ORDER_LTV 'REFUND' , 'MONTH', 6
+-- Total Refund 1 year
+EXEC DBO.ORDER_LTV 'REFUND' , 'YEAR', 1
+
+
+/**********************************  TOTAL QUANTITY RETURNED **********************************/
+-- Total Quantity Returned 14 days
+EXEC DBO.ORDER_LTV 'QUANTITY RETURNED' , 'DAY', 14
+-- Total Quantity Returned 30 days
+EXEC DBO.ORDER_LTV 'QUANTITY RETURNED' , 'DAY', 30
+-- Total Quantity Returned 3 months
+EXEC DBO.ORDER_LTV 'QUANTITY RETURNED' , 'MONTH', 3
+-- Total Quantity Returned 6 months
+EXEC DBO.ORDER_LTV 'QUANTITY RETURNED' , 'MONTH', 6
+-- Total Quantity Returned 1 year
+EXEC DBO.ORDER_LTV 'QUANTITY RETURNED' , 'YEAR', 1
+
+
