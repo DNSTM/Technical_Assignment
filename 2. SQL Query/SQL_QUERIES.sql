@@ -26,6 +26,7 @@ SELECT ACCOUNT_ID, ORDER_DATE_TIME AS LAST_ORDER_DATE FROM FACT_ORDERS AS F1 WHE
 --************************************************************************************************
 --************************************************************************************************
 --******************************* Total Sales *****************************************************
+
 -- 3.Total Sales 14 days
 SELECT 
 	ACCOUNT_ID,
@@ -73,20 +74,103 @@ FROM DBO.fact_order
 WHERE QUANTITY_ORDERED > 0
 AND ORDER_DATE_TIME > DATEADD(YEAR,-1,GETDATE())
 GROUP BY ACCOUNT_ID
+
 --************************************************************************************************
 --************************************************************************************************
 --******************************* Total Sales *****************************************************
 
 -- 8.  Total Quantity Ordered 14 days
+SELECT 
+	ACCOUNT_ID,
+	SUM(QUANTITY_ORDERED) TOTAL_QUANTITY_LAST_14_DAYS 
+FROM DBO.fact_order
+WHERE QUANTITY_ORDERED > 0
+AND ORDER_DATE_TIME > DATEADD(DAY,-14,GETDATE())
+GROUP BY ACCOUNT_ID
+
 -- 9.  Total Quantity Ordered 30 days
+SELECT 
+	ACCOUNT_ID,
+	SUM(QUANTITY_ORDERED) TOTAL_QUANTITY_LAST_30_DAYS 
+FROM DBO.fact_order
+WHERE QUANTITY_ORDERED > 0
+AND ORDER_DATE_TIME > DATEADD(DAY,-30,GETDATE())
+GROUP BY ACCOUNT_ID
+
 -- 10. Total Quantity Ordered 3 months
+SELECT 
+	ACCOUNT_ID,
+	SUM(QUANTITY_ORDERED) TOTAL_QUANTITY_LAST_3_MONTHS
+FROM DBO.fact_order
+WHERE QUANTITY_ORDERED > 0
+AND ORDER_DATE_TIME > DATEADD(MONTH,-3,GETDATE())
+GROUP BY ACCOUNT_ID
+
 -- 11. Total Quantity Ordered 6 months
+SELECT 
+	ACCOUNT_ID,
+	SUM(QUANTITY_ORDERED) TOTAL_QUANTITY_LAST_6_MONTHS
+FROM DBO.fact_order
+WHERE QUANTITY_ORDERED > 0
+AND ORDER_DATE_TIME > DATEADD(MONTH,-6,GETDATE())
+GROUP BY ACCOUNT_ID
+
 -- 12. Total Quantity Ordered 1 year
+SELECT 
+	ACCOUNT_ID,
+	SUM(QUANTITY_ORDERED) TOTAL_QUANTITY_LAST_1_YEAR
+FROM DBO.fact_order
+WHERE QUANTITY_ORDERED > 0
+AND ORDER_DATE_TIME > DATEADD(YEAR,-1,GETDATE())
+GROUP BY ACCOUNT_ID
 
+--************************************************************************************************
+--************************************************************************************************
+--******************************* Total Refund ***************************************************
 
+-- 13. Total Refund 14 days
+SELECT 
+	ACCOUNT_ID,
+	SUM(TOTAL_CHARGED_AMT * QUANTITY_RETURNED) TOTAL_REFUND_LAST_14_DAYS 
+FROM DBO.fact_order
+WHERE QUANTITY_RETURNED > 0
+AND ORDER_DATE_TIME > DATEADD(DAY,-14,GETDATE())
+GROUP BY ACCOUNT_ID
 
+-- 14. Total Refund 30 days
+SELECT 
+	ACCOUNT_ID,
+	SUM(TOTAL_CHARGED_AMT * QUANTITY_RETURNED) TOTAL_REFUND_LAST_30_DAYS 
+FROM DBO.fact_order
+WHERE QUANTITY_RETURNED > 0
+AND ORDER_DATE_TIME > DATEADD(DAY,-30,GETDATE())
+GROUP BY ACCOUNT_ID
 
+-- 15. Total Refund 3 months
+SELECT 
+	ACCOUNT_ID,
+	SUM(TOTAL_CHARGED_AMT * QUANTITY_RETURNED) TOTAL_REFUND_LAST_3_MONTHS
+FROM DBO.fact_order
+WHERE QUANTITY_RETURNED > 0
+AND ORDER_DATE_TIME > DATEADD(MONTH,-3,GETDATE())
+GROUP BY ACCOUNT_ID
 
+-- 16. Total Refund 6 months
+SELECT 
+	ACCOUNT_ID,
+	SUM(TOTAL_CHARGED_AMT * QUANTITY_RETURNED) TOTAL_REFUND_LAST_6_MONTHS
+FROM DBO.fact_order
+WHERE QUANTITY_RETURNED > 0
+AND ORDER_DATE_TIME > DATEADD(MONTH,-6,GETDATE())
+GROUP BY ACCOUNT_ID
 
+-- 17. Total Refund 1 year
+SELECT 
+	ACCOUNT_ID,
+	SUM(TOTAL_CHARGED_AMT * QUANTITY_RETURNED) TOTAL_REFUND_LAST_1_YEAR
+FROM DBO.fact_order
+WHERE QUANTITY_RETURNED > 0
+AND ORDER_DATE_TIME > DATEADD(YEAR,-1,GETDATE())
+GROUP BY ACCOUNT_ID
 
 
